@@ -39,10 +39,10 @@
 ![image](https://user-images.githubusercontent.com/88364565/197379726-14746db8-3805-4ca8-b1c5-6d7194c94b38.png)
 ### 代码开发
 处理逻辑如下：
- - 将页面提交的密码password进行md5加密处理
+ - 将页面提交的密码password进行md5加密处理                                   ![image](https://user-images.githubusercontent.com/88364565/197379942-cf6422b6-172a-4d43-9760-4551f275e6ab.png)
  - 根据页面提交的用户名username查询数据库
  - 如果没有查询到则返回登录失败结果
  - 密码比对，如果不一致则返回登录失败结果
  - 查看员工状态，如果为已禁用状态，则返回员工已禁用结果
  - 登录成功，将员工id存入Session并返回登录成功结果
- ![image](https://user-images.githubusercontent.com/88364565/197379910-4be41e92-5118-47bd-a4e6-65fba63dac62.png)
+
