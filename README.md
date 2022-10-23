@@ -209,7 +209,13 @@ ThreadLocal常用方法：
  - 服务端Controller接收页面提交的数据并调用Service删除数据
  - Service调用Mapper操作数据库
 ![image](https://user-images.githubusercontent.com/88364565/197384133-31485593-3453-41fa-b3c4-7e7582fd0e6e.png)
-
+### 功能完善
+前面我们已经实现了根据id删除分类的功能，但是并没有检查删除的分类是否关联了菜品或者套餐，所以我们需要进行功能完善。
+要完善分类删除功能，需要先准备基础的类和接口
+ - 实体类Dish和setmeal
+ - Mapper接口DishMapper和SetmealMapper
+ - Service接口Dishservice和Setmealservice
+ - Service实现类Dishservicelmpl和SetmealserviceImpl
 
 
 
