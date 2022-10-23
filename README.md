@@ -176,4 +176,45 @@ ThreadLocal常用方法：
 ## 新增分类
 ### 需求分析
 后台系统中可以管理分类信息，分类包括两种类型，分别是菜品分类和套餐分类。当我们在后台系统中添加菜品时需要选择一个菜品分类，当我们在后台系统中添加一个套餐时需要选择一个套餐分类，在移动端也会按照菜品分类和套餐分类来展示对应的菜品和套餐。
+### 数据模型
+新增分类即：在新增窗口录入的分类数据插入到category中，表中name唯一。
+### 代码开发
+在开发业务功能前，先将需要用到的类和接口基本结构创建好
+ - 实体类Category
+ - Mapper接口CategoryMapper
+ - 业务层接口Categoryservice
+ - 业务层实现类Categoryservicelmpl
+ - 控制层Categorycontroller
+在开发代码之前，需要梳理一下整个程序的执行过程
+ - 页面（backend/page/category/list.html)发送ajax请求，将新增分类窗口输入的数据以json形式提交到服务端
+ - 服务端Controller接收页面提交的数据并调用Service将数据进行保存
+ - Service调用Mapper操作数据库，保存数据
+可以看到新增菜品分类和新增套餐分类请求的服务端地址和提交的json数据结构相同，所以服务端只需要提供一个方法统一处理即可
+![image](https://user-images.githubusercontent.com/88364565/197382955-c3f68995-20d4-479a-8190-bd13d47bddb8.png)
+## 分类分页查询
+### 代码开发
+在开发代码之前，需要梳理一下整个程序的执行过程
+ - 页面发送ajax请求，将分页查询参数（page、pagesize）提交到服务端
+ - 服务端Controller接收页面提交的数据并调用Service查询数据
+ - Service调用Mapper操作数据库，查询分页数据
+ - Controller将查询到的分页数据响应给页面
+ - 页面接收到分页数据并通过Element-ul的Table组件展示到页面上
+![image](https://user-images.githubusercontent.com/88364565/197383557-e405f31f-7fb4-40b9-b444-8f8de2d28754.png)
+## 删除分类
+### 分析
+在分类管理列表页面，可以对某个分类进行删除操作。需要注意的是当分类关联了菜品或者套餐时，此分类不允许删除
+### 代码开发
+ 在开发代码之前，需要梳理一下整个程序的执行过程
+ - 页面发送aiax请求，将参数（id）提交到服务端
+ - 服务端Controller接收页面提交的数据并调用Service删除数据
+ - Service调用Mapper操作数据库
+![image](https://user-images.githubusercontent.com/88364565/197384133-31485593-3453-41fa-b3c4-7e7582fd0e6e.png)
+
+
+
+
+
+
+
+
 
