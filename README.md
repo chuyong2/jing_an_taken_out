@@ -32,3 +32,17 @@
  - C端用户：登录移动端应用，可以浏览菜品、添加购物车、设置地址、在线下单等
 ## 数据库设计
 ![image](https://user-images.githubusercontent.com/88364565/197379518-86b5d20f-5b27-4528-87b8-9e9d0ab70f6f.png)
+## 后台登录功能开发
+### 需求分析
+查看登录请求信息，通过浏览器调试工具（F12），可以发现，点击登录按钮时，页面会发送请求（请求地址为http://localhost:/8080/employee/login）并提交参数（username和password）
+此时报404，是因为我们的后台系统还没有响应此请求的处理器，所以我们需要创建相关类来处理登录请求
+![image](https://user-images.githubusercontent.com/88364565/197379726-14746db8-3805-4ca8-b1c5-6d7194c94b38.png)
+### 代码开发
+处理逻辑如下：
+ - 将页面提交的密码password进行md5加密处理
+ - 根据页面提交的用户名username查询数据库
+ - 如果没有查询到则返回登录失败结果
+ - 密码比对，如果不一致则返回登录失败结果
+ - 查看员工状态，如果为已禁用状态，则返回员工已禁用结果
+ - 登录成功，将员工id存入Session并返回登录成功结果
+ ![image](https://user-images.githubusercontent.com/88364565/197379910-4be41e92-5118-47bd-a4e6-65fba63dac62.png)
