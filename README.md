@@ -144,8 +144,21 @@ MybatisPlus公共字段自动填充，也就是在插入或者更新的时候为
  - 按照框架要求编写元数据对象处理器，在此类中统一为公共字段赋值，此类需要实现MetaobjectHandler接口
 ![image](https://user-images.githubusercontent.com/88364565/197381871-a7bbdc59-c6b5-43a0-8d22-c6a0707cc92a.png)
 ![image](https://user-images.githubusercontent.com/88364565/197381890-8f727de7-f29e-4df0-bf59-343a506299d4.png)
-
-
+### 功能完善
+前面我们已经完成了公共字段自动填充功能的代码开发，但是还有一个问题没有解决，就是我们在自动填充createUser和updateUser时设置的用户id是固定值，现在我们需要改造成动态获取当前登录用户的id。
+有的同学可能想到，用户登录成功后我们将用户id存入了Httpsession中，现在我从Httpsession中获取不就行了？
+注意，我们在MyMetaObiectHandler类中是不能获得Httpsession对象的，所以我们需要通过其他方式来获取登录用户id可以使用ThreadLocal来解决此问题，它是JDK中提供的一个类
+在学习ThreadLocal之前，我们需要先确认一个事情，就是客户端发送的每次http请求，对应的在服务端都会分配一个新的线程来处理， 在处理过程中涉及到下面类中的方法都属于相同的一个线程；
+ - LogincheckFilter的doFilter方法
+ - EmployeeController的update方法
+ - MyMetaobjectHandler的updateFil方法
+ 可以在上面的三个方法中分别加入下面代码（获取当前线程id）
+ ```
+  long id = Thread.currentThread().getId();
+  log.info("线程id:{}"，id);
+ ```
+  执行编辑员工功能进行验证，通过观察控制台输出可以发现，一次请求对应的线程id是相同的
+![image](https://user-images.githubusercontent.com/88364565/197382033-2269f513-fe29-4dbd-8d00-0569834e09fd.png)
 
 
 
