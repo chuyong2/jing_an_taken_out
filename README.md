@@ -161,12 +161,19 @@ MybatisPlus公共字段自动填充，也就是在插入或者更新的时候为
 ![image](https://user-images.githubusercontent.com/88364565/197382033-2269f513-fe29-4dbd-8d00-0569834e09fd.png)
 ### 什么是ThreadLocal:
 ThreadLocal并不是一个Thread，而是Thread的局部变量。当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。ThreadLocal为每个线程提供单独一份存储空间，具有线程隔离的效果，只有在线程内才能获取到对应的值，线程外则不能访问。
+
 ThreadLocal常用方法：
    public void set(T value）   设置当前线程的线程局部变量的值
    public T get()               返回当前线程所对应的线程局部变量的值
+   
 我们可以在LogincheckFilter的doFilter方法中获取当前登录用户id，并调用ThreadLocal的set方法来设置当前线程的线
 程局部变量的值（用户id），然后在MyMetaObjectHandler的updateFil方法中调用ThreadLocal的get方法来获得当前
 线程所对应的线程局部变量的值（用户id）
-
-
+### 实现步骤
+ - 编写Basecontext工具类，基于ThreadLocal封装的工具类
+ - 在LogincheckFilter的doFilter方法中调用BaseContext来设置当前登录用户的id
+ - 在MyMetaObjectHandler的方法中调用BaseContext获取登录用户的id
+## 新增分类
+### 需求分析
+后台系统中可以管理分类信息，分类包括两种类型，分别是菜品分类和套餐分类。当我们在后台系统中添加菜品时需要选择一个菜品分类，当我们在后台系统中添加一个套餐时需要选择一个套餐分类，在移动端也会按照菜品分类和套餐分类来展示对应的菜品和套餐。
 
