@@ -63,11 +63,50 @@
  - 在启动类上加入注解@servletcomponentscan
  - 完善过滤器的处理逻辑
 ![image](https://user-images.githubusercontent.com/88364565/197380404-8d977ad1-ab9e-44b0-b100-f3d689c6bd90.png)
+
 过滤器具体的处理逻辑如下：
  - 获取本次请求的URI
  - 判断本次请求是否需要处理
  - 如果不需要处理，则直接放行
- - 判断登录状态，如果已登录，则直接放行5、如果未登录则返回未登录结果
+ - 判断登录状态，如果已登录，则直接放行
+ - 如果未登录则返回未登录结果
+## 新增员工
+### 数据模型
+新增员工，其实就是将我们新增页面录入的员工数据插入到employee表。需要注意，employee表中对username字段加入了唯一约束，因为username是员工的登录账号，必须是唯一的
+status默认值为1（1为正常，0为未启用）
+### 代码开发
+在开发代码之前，需要梳理一下整个程序的执行过程
+ - 页面发送ajax请求，将新增员工页面中输入的数据以json的形式提交到服务端
+ - 服务端Controller接收页面提交的数据并调用Service将数据进行保存
+ - Service调用Mapper操作数据库，保存数据
+![image](https://user-images.githubusercontent.com/88364565/197380641-dcb701e6-35c1-49ea-8e01-c772763fdf21.png)
+### 发现问题
+前面的程序还存在一个问题，就是当我们在新增员工时输入的账号已经存在，由于employee表中对该字段加入了唯一约束，此时程序会抛出异常：java. sql. SQLIntegrityConstraintViolationException: Duplicate entryzhangsan for keyidx_username。此时需要我们的程序进行异常捕获，通常有两种处理方式
+ - 在Controller方法中加入try、catch进行异常捕获 
+ - 使用异常处理器进行全局异常获
+### 小结
+1、根据产品原型明确业务需求
+2、重点分析数据的流转过程和数据格式
+3.通过debug断点调试跟踪程序执行过程
+## 员工信息分页查询
+员工数据多了就要分页显示，否则杂乱无章
+### 代码开发
+在开发代码之前，需要梳理一下整个程序的执行过程
+ - 页面发送ajax请求，将分页查询参数（page、pagesize、name）提交到服务端
+ - 服务端Controller接收页面提交的数据并调用ervice查询数据
+ - Service调用Mapper操作数据库，查询分页数据
+ - Controller将查询到的分页数据响应给页面
+ - 页面接收到分页数据并通过Elementul的Table组件展示到页面上
+![image](https://user-images.githubusercontent.com/88364565/197380958-90741c70-e720-4096-979e-4955fd2f2184.png)
+
+
+
+
+
+
+
+
+
 
 
 
