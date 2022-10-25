@@ -216,8 +216,11 @@ ThreadLocal常用方法：
  - Mapper接口DishMapper和SetmealMapper
  - Service接口Dishservice和Setmealservice
  - Service实现类Dishservicelmpl和SetmealserviceImpl
-
-
+## 修改分类
+### 分析
+在分类管理列表页面点击修改按钮，弹出修改窗口，在修改窗口回显分类信息并进行修改，最后点击确定按钮完成操作。
+# 菜品管理业务开发
+## 文件上传下载
 
 
 
