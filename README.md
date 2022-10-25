@@ -223,9 +223,9 @@ ThreadLocal常用方法：
 ## 文件上传下载
 文件上传，也称upload，是指将本地图片，视频，音频等文件上传到服务器，可以供其他用户浏览下载的过程。文件上传在项目应用中非常广泛。
 文件上传时，对页面form表单有以下要求：
- - method="post"&emsp&emsp&emsp&emsp                  采用post方法提交数据
- - enctype="multipart/form-data"&emsp&emsp  采用multiparty格式上传文件
- - type="file" &emsp&emsp&emsp&emsp&emsp                   采用input的file控件上传
+ - method="post"&emsp;&emsp;&emsp;&emsp;                  采用post方法提交数据
+ - enctype="multipart/form-data"&emsp;&emsp;  采用multiparty格式上传文件
+ - type="file" &emsp;&emsp;&emsp;&emsp;&emsp;                   采用input的file控件上传
 
 
 
