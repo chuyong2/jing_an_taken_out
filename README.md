@@ -226,7 +226,20 @@ ThreadLocal常用方法：
  - method="post"&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;                  采用post方法提交数据
  - enctype="multipart/form-data"&emsp;&emsp;  采用multiparty格式上传文件
  - type="file" &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;                   采用input的file控件上传
-
+![image](https://user-images.githubusercontent.com/88364565/197813276-3e314f5f-d87a-45cb-a858-a0dbdc5939c1.png)
+### 介绍
+服务端要接收客户端上传的文件，通常会使用Apache的两个组件：
+ - commons-fileupload
+ - commons-io
+spring框架在spring-web包中对文件上传进行了封装，大大简化了服务端代码，我们只需要在Controller的方法中声明一个MultipartFile类型的参数即可接收上传的文件
+```
+//例如
+@PostMapping(value = "upload")
+public result<String> upload(MultipartFile file){
+   System.out.println(file);
+   return null;
+}
+```
 
 
 
