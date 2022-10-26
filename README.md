@@ -227,7 +227,7 @@ ThreadLocal常用方法：
  - enctype="multipart/form-data"&emsp;&emsp;  采用multiparty格式上传文件
  - type="file" &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;                   采用input的file控件上传
 ![image](https://user-images.githubusercontent.com/88364565/197813276-3e314f5f-d87a-45cb-a858-a0dbdc5939c1.png)
-### 介绍
+### 介绍(上传)
 服务端要接收客户端上传的文件，通常会使用Apache的两个组件：
  - commons-fileupload
  - commons-io
@@ -240,6 +240,37 @@ public result<String> upload(MultipartFile file){
    return null;
 }
 ```
+### 代码实现（上传）
+文件上传，页面端可以使用element—UI提供的组件
+![image](https://user-images.githubusercontent.com/88364565/197941207-ec09c28e-a144-4d28-8a16-b1a9487312b4.png)
+### 下载
+文件下载，也称download，是指将文件从服务器传输到本地计算机的过程。
+通过浏览器进行文件下载，通常有两种表现形式。
+ - 以附件形式下载，弹出保存对话框，将文件保存到指定磁盘
+ - 直接在浏览器中打开
+通过浏览器进行文件下载，本质上是服务端将文件以流的形式写回浏览器的过程
+### 代码实现
+![image](https://user-images.githubusercontent.com/88364565/197954967-ec08afdc-6a4f-4fce-8711-242a4f9e48d0.png)
+
+## 新增菜品
+### 需求分析
+后台系统中可以管理菜品信息，通过新增功能来添加一个新的菜品，在添加菜品时需要选择当前菜品所属的菜品分类并且需要上传菜品图片，在移动端会按照菜品分类来展示对应的菜品信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
